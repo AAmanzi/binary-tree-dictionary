@@ -14,6 +14,9 @@ BSTree NewBSTree()
 
 void AddNode(BSTree *bst, char *word)
 {
+	//Adds one node to the tree in its rightful place
+	//Alphabetically
+
 	if (*bst == NULL)
 		*bst = NewBSTree();
 
@@ -34,6 +37,8 @@ void AddNode(BSTree *bst, char *word)
 
 int BSTHeight(BSTree bst)
 {
+	//Height of the tree
+
 	if (bst == NULL)
 		return 0;
 
@@ -46,12 +51,14 @@ int BSTHeight(BSTree bst)
 	return 1 + heightMax;
 }
 
-int BSTUnits(BSTree bst)
+int BSTNodeAmount(BSTree bst)
 {
+	//Number of nodes that the tree contains
+
 	if (bst == NULL)
 		return 0;
 
-	return 1 + BSTUnits(bst->left) + BSTUnits(bst->right);
+	return 1 + BSTNodeAmount(bst->left) + BSTNodeAmount(bst->right);
 }
 
 void PrintBSTree(BSTree bst)
@@ -68,14 +75,14 @@ void PrintBSTree(BSTree bst)
 
 void SaveBSTree(BSTree bst, FILE *fd)
 {
-	
-
+	//Writes tree into file
+	//Pre-order walk through tree (first node, then children)
 }
 
 void DeleteBSTree(BSTree bst)
 {
 	//Deletes tree (string word and point) from memory
-	//Post-order walk through tree (first children then point)
+	//Post-order walk through tree (first children, then node)
 }
 
 BSTree LoadBSTree(FILE *fd)

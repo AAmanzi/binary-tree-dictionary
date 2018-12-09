@@ -50,7 +50,7 @@ void main()
 
 	PrintBSTree(bst);
 	int height = BSTHeight(bst);
-	int sizeOfBSTree = BSTUnits(bst);
+	int sizeOfBSTree = BSTNodeAmount(bst);
 	printf("\nHeight: %d\nWords in file: %d\nWords in binary tree: %d\n", height, wc, sizeOfBSTree);
 
 	/*

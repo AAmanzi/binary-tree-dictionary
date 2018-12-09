@@ -19,7 +19,7 @@ void AddNode(BSTree *bst, char *word);
 
 int BSTHeight(BSTree bst);
 
-int BSTUnits(BSTree bst);
+int BSTNodeAmount(BSTree bst);
 
 void PrintBSTree(BSTree bst);
 
