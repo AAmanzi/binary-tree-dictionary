@@ -26,10 +26,10 @@ void AddNode(BSTree *bst, char *word)
 	}
 
 	if (strcmp((*bst)->word, word) > 0)
-		AddNode(&(*bst)->right, word);
+		AddNode(&(*bst)->left, word);
 
 	else if (strcmp((*bst)->word, word) < 0)
-		AddNode(&(*bst)->left, word);
+		AddNode(&(*bst)->right, word);
 }
 
 int BSTHeight(BSTree bst)
@@ -42,7 +42,7 @@ int BSTHeight(BSTree bst)
 	int heightLeft = BSTHeight(bst->left);
 	int heightRight = BSTHeight(bst->right);
 	int heightMax = heightLeft;
-	if (heightRight > heightRight)
+	if (heightRight > heightLeft)
 		heightMax = heightRight;
 
 	return 1 + heightMax;
