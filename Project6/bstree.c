@@ -25,14 +25,11 @@ void AddNode(BSTree *bst, char *word)
 		return;
 	}
 
-	if (strcmp((*bst)->word, word) == 0)
-		return;
-
-	else if (strcmp((*bst)->word, word) > 0)
-		AddNode(&(*bst)->left, word);
-
-	else
+	if (strcmp((*bst)->word, word) > 0)
 		AddNode(&(*bst)->right, word);
+
+	else if (strcmp((*bst)->word, word) < 0)
+		AddNode(&(*bst)->left, word);
 }
 
 int BSTHeight(BSTree bst)
@@ -77,16 +74,34 @@ void SaveBSTree(BSTree bst, FILE *fd)
 {
 	//Writes tree into file
 	//Pre-order walk through tree (first node, then children)
+	if (bst == NULL)
+		return;
+
+	fputs(bst->word, fd);
+	fputs(" ", fd);
+
+	SaveBSTree(bst->left, fd);
+	SaveBSTree(bst->right, fd);
 }
 
 void DeleteBSTree(BSTree bst)
 {
 	//Deletes tree (string word and point) from memory
 	//Post-order walk through tree (first children, then node)
+	if (bst == NULL)
+		return;
+
+	DeleteBSTree(bst->left);
+	DeleteBSTree(bst->right);
+	free(bst->word);
+	bst->left = NULL;
+	bst->right = NULL;
+	free(bst);
 }
 
 BSTree LoadBSTree(FILE *fd)
 {
 	//Loads word by word from .txt file and adds them to the tree through AddNode() function
 	//Word must be copied with strdup()
+
 }

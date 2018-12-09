@@ -53,18 +53,15 @@ void main()
 	int sizeOfBSTree = BSTNodeAmount(bst);
 	printf("\nHeight: %d\nWords in file: %d\nWords in binary tree: %d\n", height, wc, sizeOfBSTree);
 
-	/*
-	// Save and delete
-	if ((fd = fopen("stablo.txt", "wt")) == NULL)
+	if ((fd = fopen("BSTree.txt", "wt")) == NULL)
 	{
 		printf("Error opening file for writing.\n");
 		return;
 	}
 	SaveBSTree(bst, fd);
 	fclose(fd);
-
 	DeleteBSTree(bst);
-
+	/*
 	// Load tree
 	if ((fd = fopen("stablo.txt", "rt")) == NULL)
 	{
