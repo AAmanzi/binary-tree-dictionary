@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <ctype.h>
+#include <malloc.h>
 
 typedef struct Node {
 	char *word;
@@ -29,7 +30,5 @@ void SaveBSTree(BSTree bst, FILE *fd);
 void DeleteBSTree(BSTree bst);
 
 BSTree LoadBSTree(FILE *fd);
-
-
 
 #endif

@@ -1,15 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <malloc.h>
+
 #include "bstree.h"
 
 BSTree NewBSTree()
 {
-	BSTree newTree = malloc(sizeof(Node));
-	newTree->word = "";
-	newTree->left = NULL;
-	newTree->right = NULL;
-
-	return newTree;
+	return NULL;
 }
 
 void AddNode(BSTree *bst, char *word)
@@ -18,11 +13,11 @@ void AddNode(BSTree *bst, char *word)
 	//Alphabetically
 
 	if (*bst == NULL)
-		*bst = NewBSTree();
-
-	if ((*bst)->word == "") {
+	{
+		*bst = malloc(sizeof(Node));
 		(*bst)->word = word;
-		return;
+		(*bst)->left = NULL;
+		(*bst)->right = NULL;
 	}
 
 	if (strcmp((*bst)->word, word) > 0)
@@ -78,7 +73,7 @@ void SaveBSTree(BSTree bst, FILE *fd)
 		return;
 
 	fputs(bst->word, fd);
-	fputs(" ", fd);
+	fputs("\n", fd);
 
 	SaveBSTree(bst->left, fd);
 	SaveBSTree(bst->right, fd);
@@ -94,8 +89,6 @@ void DeleteBSTree(BSTree bst)
 	DeleteBSTree(bst->left);
 	DeleteBSTree(bst->right);
 	free(bst->word);
-	bst->left = NULL;
-	bst->right = NULL;
 	free(bst);
 }
 
@@ -122,8 +115,7 @@ BSTree LoadBSTree(FILE *fd)
 				c = '\'';
 		}
 		buffer[i] = '\0';
-		AddNode(&newTree, buffer);
-
+		AddNode(&newTree, _strdup(buffer));
 	}
 	return newTree;
 }
