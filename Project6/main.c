@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <ctype.h>
+
 #include "bstree.h"
 
 int readWord(FILE *fd, char *buffer)
@@ -61,9 +61,10 @@ void main()
 	SaveBSTree(bst, fd);
 	fclose(fd);
 	DeleteBSTree(bst);
-	/*
+
 	// Load tree
-	if ((fd = fopen("stablo.txt", "rt")) == NULL)
+	
+	if ((fd = fopen("BSTree.txt", "rt")) == NULL)
 	{
 		printf("Error opening file for reading.\n");
 		return;
@@ -73,7 +74,7 @@ void main()
 
 	printf("\nH = %d\n", BSTHeight(bst));
 	DeleteBSTree(bst);
-	*/
 	
+
 	system("pause");
 }

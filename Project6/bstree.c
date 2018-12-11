@@ -103,5 +103,27 @@ BSTree LoadBSTree(FILE *fd)
 {
 	//Loads word by word from .txt file and adds them to the tree through AddNode() function
 	//Word must be copied with strdup()
+	BSTree newTree = NewBSTree();
+	int c;
 
+	while (1)
+	{
+		c = fgetc(fd);
+		if (c == EOF)
+			break;
+		char *buffer = malloc (sizeof(char) * 1024);
+		int i = 0;
+		while (isalpha(c) || c == '\'') 
+		{
+			buffer[i] = tolower(c);
+			i++;
+			c = fgetc(fd);
+			if (c == 146)
+				c = '\'';
+		}
+		buffer[i] = '\0';
+		AddNode(&newTree, buffer);
+
+	}
+	return newTree;
 }
